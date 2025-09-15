@@ -1,8 +1,9 @@
+// src/app/components/Footer.tsx
 import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="mt-16 border-t border-neutral-300 bg-[#EFE7DC] text-[#2B241E]">
+    <footer className="w-full border-t border-neutral-300 bg-[#EFE7DC] text-[#2B241E]">
       <div className="mx-auto max-w-6xl px-4 py-10 grid gap-6 md:grid-cols-3">
         <div>
           <h3 className="font-semibold">Studio</h3>
