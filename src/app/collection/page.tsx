@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useMemo, useState } from "react";
 import { PRODUCTS, CATEGORIES } from "@/data/products";
 
@@ -23,7 +24,11 @@ export default function CollectionPage() {
             key={cat}
             onClick={() => setActive(cat)}
             className={`px-4 py-2 rounded-full border transition
-              ${active === cat ? "bg-[#C8A57A] text-white border-[#C8A57A]" : "bg-white border-neutral-300 hover:border-neutral-400"}`}
+              ${
+                active === cat
+                  ? "bg-[#C8A57A] text-white border-[#C8A57A]"
+                  : "bg-white border-neutral-300 hover:border-neutral-400"
+              }`}
             aria-pressed={active === cat}
           >
             {cat}
@@ -36,16 +41,21 @@ export default function CollectionPage() {
         {items.map((p) => (
           <Link
             key={p.slug}
-            href={`/product/${p.slug}`}
+            // redirect to contact; include product slug & title as query
+            href={`/contact?item=${encodeURIComponent(p.slug)}&title=${encodeURIComponent(
+              p.title
+            )}`}
             className="group rounded-2xl overflow-hidden border border-neutral-200 bg-white hover:shadow-md transition"
           >
-            {/* Image placeholder (will replace with real images later) */}
-            <div
-              className="aspect-square w-full"
-              aria-label={`${p.title} preview`}
-              role="img"
-            >
-              <div className="h-full w-full bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-[#C8A57A] via-[#FAF7F2] to-[#9B6B43] group-hover:scale-[1.02] transition" />
+            <div className="aspect-square w-full overflow-hidden">
+              <Image
+                src={p.image}
+                alt={p.title}
+                width={800}
+                height={800}
+                sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300"
+              />
             </div>
 
             <div className="p-4">
@@ -54,6 +64,9 @@ export default function CollectionPage() {
               <p className="mt-2 text-sm text-neutral-700 line-clamp-2">
                 {p.shortDescription}
               </p>
+              <div className="mt-3 text-sm font-medium text-[#9B6B43]">
+                Contact about this piece →
+              </div>
             </div>
           </Link>
         ))}

@@ -1,101 +1,66 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function ContactPage() {
-  const search = useSearchParams();
-  const prefilledItem = useMemo(() => search.get("item") ?? "", [search]);
-
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const params = useSearchParams();
   const [message, setMessage] = useState("");
 
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-
-    // TODO: change to your friend’s real email
-    const to = "hello@example.com";
-
-    const subject = `Inquiry: ${prefilledItem || "General"}`;
-    const body = `Name: ${name}
-Email: ${email}
-Item: ${prefilledItem || "N/A"}
-
-Message:
-${message}`;
-
-    const href = `mailto:${to}?subject=${encodeURIComponent(
-      subject
-    )}&body=${encodeURIComponent(body)}`;
-
-    window.location.href = href;
-  }
+  // If a product was clicked, prefill the message intro
+  useEffect(() => {
+    const title = params.get("title");
+    const slug = params.get("item");
+    if (title || slug) {
+      setMessage(
+        `I'm interested in: ${title ?? slug}\n\n` +
+        "Are you interested in a particular object or do you need a particular work done?"
+      );
+    }
+  }, [params]);
 
   return (
     <section className="py-12">
       <h1 className="text-3xl md:text-4xl font-semibold">Contact</h1>
-      <p className="mt-2 text-neutral-600">
+      <p className="mt-2 text-sm text-neutral-400">
         Questions, custom requests, or commissions—send a note below.
       </p>
 
-      <form onSubmit={handleSubmit} className="mt-8 max-w-xl space-y-5">
-        {prefilledItem ? (
-          <div>
-            <label className="block text-sm text-neutral-600">Item</label>
-            <input
-              value={prefilledItem}
-              readOnly
-              className="mt-1 w-full rounded-lg border border-neutral-300 bg-neutral-100 px-3 py-2"
-            />
-          </div>
-        ) : null}
-
+      <form className="mt-8 max-w-2xl space-y-4">
         <div>
-          <label className="block text-sm text-neutral-600">Name</label>
+          <label className="block text-sm font-medium">Name</label>
           <input
-            required
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            className="mt-1 w-full rounded-lg border border-neutral-300 px-3 py-2"
+            type="text"
+            className="mt-1 w-full rounded-md border border-neutral-300 bg-transparent px-3 py-2 outline-none focus:border-neutral-500"
             placeholder="Your name"
           />
         </div>
 
         <div>
-          <label className="block text-sm text-neutral-600">Email</label>
+          <label className="block text-sm font-medium">Email</label>
           <input
-            required
             type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="mt-1 w-full rounded-lg border border-neutral-300 px-3 py-2"
+            className="mt-1 w-full rounded-md border border-neutral-300 bg-transparent px-3 py-2 outline-none focus:border-neutral-500"
             placeholder="you@example.com"
           />
         </div>
 
         <div>
-          <label className="block text-sm text-neutral-600">Message</label>
+          <label className="block text-sm font-medium">Message</label>
           <textarea
-            required
-            rows={6}
+            className="mt-1 w-full rounded-md border border-neutral-300 bg-transparent px-3 py-2 outline-none focus:border-neutral-500 min-h-[140px]"
+            placeholder="Are you interested in a particular object or do you need a particular work done?"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            className="mt-1 w-full rounded-lg border border-neutral-300 px-3 py-2"
-            placeholder="Tell us what you have in mind…"
           />
         </div>
 
         <button
           type="submit"
-          className="inline-block rounded-full bg-[#9B6B43] px-5 py-3 text-white transition hover:opacity-90"
+          className="inline-flex items-center rounded-md bg-[#C8A57A] px-5 py-2 text-white hover:opacity-90"
         >
           Send Inquiry
         </button>
-
-        <p className="text-xs text-neutral-500">
-          By sending, you agree that we may contact you regarding your request.
-        </p>
       </form>
     </section>
   );

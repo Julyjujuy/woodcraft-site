@@ -1,88 +1,85 @@
 export type Product = {
   slug: string;
   title: string;
-  category: "Mirrors" | "Frames" | "Objects";
+  category: "Frames" | "Woodwork";
   shortDescription: string;
-  year?: string;
-  dimensions?: string;
-  wood?: string;
-  finish?: string;
-  images: string[]; // we’ll add real image paths later (public/images/...)
+  image: string;
 };
 
 export const PRODUCTS: Product[] = [
+  // WOODWORK
   {
-    slug: "wave-blue-mirror",
-    title: "Wave Blue Mirror",
-    category: "Mirrors",
-    shortDescription:
-      "Hand-carved mirror frame with soft wave contours. Lorem ipsum dolor sit amet.",
-    year: "2025",
-    dimensions: "80 × 60 cm",
-    wood: "Ash",
-    finish: "Natural oil, blue wash",
-    images: ["/images/placeholders/mirror-01.jpg"],
+    slug: "legno-1",
+    title: "Textured Wood Panel",
+    category: "Woodwork",
+    shortDescription: "Hand-carved flowing patterns inspired by natural forms.",
+    image: "/images/collection/legno1.jpg",
   },
   {
-    slug: "curved-walnut-frame",
-    title: "Curved Walnut Frame",
+    slug: "legno-2",
+    title: "Wave Carving",
+    category: "Woodwork",
+    shortDescription: "Organic wave carving highlighting the natural grain.",
+    image: "/images/collection/legno2.jpg",
+  },
+  {
+    slug: "legno-3",
+    title: "Relief Surface",
+    category: "Woodwork",
+    shortDescription: "Hand-tooled surface texture with rhythmic lines.",
+    image: "/images/collection/legno3.jpg",
+  },
+  {
+    slug: "legno-5",
+    title: "Workshop Panel",
+    category: "Woodwork",
+    shortDescription: "Detailed hand carving, captured in the artist’s studio.",
+    image: "/images/collection/legno5.jpg",
+  },
+  {
+    slug: "vaso-1",
+    title: "Sculptural Vase Base",
+    category: "Woodwork", // moved from Objects → product is the WOOD base
+    shortDescription: "Carved wooden base designed to support a vase form.",
+    image: "/images/collection/vaso1.jpg",
+  },
+
+  // FRAMES  (mirrors are frames; moved here from 'Mirrors')
+  {
+    slug: "specchio-3",
+    title: "Blue Carved Frame",
     category: "Frames",
-    shortDescription:
-      "Sinuous walnut picture frame. Consectetur adipiscing elit.",
-    year: "2024",
-    dimensions: "40 × 30 cm",
-    wood: "Walnut",
-    finish: "Oil & wax",
-    images: ["/images/placeholders/frame-01.jpg"],
+    shortDescription: "Hand-carved frame finished with soft blue pigments.",
+    image: "/images/collection/specchio3.jpg",
   },
   {
-    slug: "sculpted-vase-stand",
-    title: "Sculpted Vase Stand",
-    category: "Objects",
-    shortDescription:
-      "Minimal stand for vases and small plants. Integer dignissim risus non pharetra convallis.",
-    year: "2025",
-    dimensions: "H 25 cm",
-    wood: "Beech",
-    finish: "Shellac",
-    images: ["/images/placeholders/object-01.jpg"],
-  },
-  {
-    slug: "oval-mirror-warm",
-    title: "Oval Mirror — Warm",
-    category: "Mirrors",
-    shortDescription:
-      "Organic oval mirror frame with warm tones. Donec a sapien a risus dictum sollicitudin.",
-    images: ["/images/placeholders/mirror-02.jpg"],
-  },
-  {
-    slug: "ridged-frame-small",
-    title: "Ridged Frame (Small)",
+    slug: "specchio-4",
+    title: "Natural Carved Frame",
     category: "Frames",
-    shortDescription: "Small ridged frame for prints or photos.",
-    images: ["/images/placeholders/frame-02.jpg"],
+    shortDescription: "Organic waves hand-carved into a natural wood frame.",
+    image: "/images/collection/specchio4.jpg",
   },
   {
-    slug: "wall-relief-wave",
-    title: "Wall Relief — Wave",
-    category: "Objects",
-    shortDescription: "Shallow relief panel with flowing lines.",
-    images: ["/images/placeholders/object-02.jpg"],
-  },
-  {
-    slug: "mirror-natural-ash",
-    title: "Mirror — Natural Ash",
-    category: "Mirrors",
-    shortDescription: "Clean ash frame enhancing natural grain.",
-    images: ["/images/placeholders/mirror-03.jpg"],
-  },
-  {
-    slug: "frame-dark-walnut",
-    title: "Frame — Dark Walnut",
+    slug: "specchio-5",
+    title: "Tall Carved Frame",
     category: "Frames",
-    shortDescription: "Classic dark walnut frame with soft edges.",
-    images: ["/images/placeholders/frame-03.jpg"],
+    shortDescription: "Large hand-carved frame for interior installations.",
+    image: "/images/collection/specchio5.jpg",
+  },
+  {
+    slug: "frame-1",
+    title: "Hammered Texture Frame",
+    category: "Frames",
+    shortDescription: "A frame finished with a hand-hammered surface texture.",
+    image: "/images/collection/frame1.jpg",
+  },
+  {
+    slug: "frame-3",
+    title: "Vertical Fluted Frame",
+    category: "Frames",
+    shortDescription: "Minimalist fluted carving for subtle modern detail.",
+    image: "/images/collection/frame3.jpg",
   },
 ];
 
-export const CATEGORIES = ["All", "Mirrors", "Frames", "Objects"] as const;
+export const CATEGORIES = ["All", "Frames", "Woodwork"] as const;
