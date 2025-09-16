@@ -25,7 +25,8 @@ export default function Footer() {
           <ul className="text-sm mt-2 space-y-1">
             <li><a className="hover:underline" href="#" target="_blank" rel="noopener noreferrer">Instagram</a></li>
             <li><a className="hover:underline" href="#" target="_blank" rel="noopener noreferrer">Facebook</a></li>
-            <li><a className="hover:underline" href="mailto:hello@example.com">hello@example.com</a></li>
+            <li><a className="hover:underline" href="mailto:emanuele@bottegamarchi.com">emanuele@bottegamarchi.com</a></li>
+
           </ul>
         </div>
       </div>
