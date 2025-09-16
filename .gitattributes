@@ -1,1 +1,15 @@
-public/videos/*.mp4 filter=lfs diff=lfs merge=lfs -text
+# Keep images as binary (don’t try to diff them)
+*.jpg binary
+*.jpeg binary
+*.png binary
+*.gif binary
+*.webp binary
+
+# Keep font files as binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.eot binary
+
+# Keep PDFs as binary
+*.pdf binary

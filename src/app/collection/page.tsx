@@ -27,7 +27,7 @@ export default function CollectionPage() {
               ${
                 active === cat
                   ? "bg-[#C8A57A] text-white border-[#C8A57A]"
-                  : "bg-white border-neutral-300 hover:border-neutral-400"
+                  : "bg-white text-neutral-800 border-neutral-300 hover:border-neutral-400 hover:text-neutral-900"
               }`}
             aria-pressed={active === cat}
           >
@@ -41,7 +41,6 @@ export default function CollectionPage() {
         {items.map((p) => (
           <Link
             key={p.slug}
-            // redirect to contact; include product slug & title as query
             href={`/contact?item=${encodeURIComponent(p.slug)}&title=${encodeURIComponent(
               p.title
             )}`}
@@ -59,9 +58,9 @@ export default function CollectionPage() {
             </div>
 
             <div className="p-4">
-              <div className="text-sm text-neutral-500">{p.category}</div>
-              <h3 className="mt-1 text-lg font-medium">{p.title}</h3>
-              <p className="mt-2 text-sm text-neutral-700 line-clamp-2">
+              <div className="text-sm text-neutral-700">{p.category}</div>
+              <h3 className="mt-1 text-lg font-semibold text-neutral-900">{p.title}</h3>
+              <p className="mt-2 text-sm text-neutral-800 line-clamp-2">
                 {p.shortDescription}
               </p>
               <div className="mt-3 text-sm font-medium text-[#9B6B43]">
